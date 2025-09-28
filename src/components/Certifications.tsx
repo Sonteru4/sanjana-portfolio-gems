@@ -92,7 +92,7 @@ export default function Certifications() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certifications.map((cert) => (
-              <Card key={cert.id} className="card-hover transition-all duration-300 border-primary/10 shadow-emerald">
+              <Card key={cert.id} className="card-hover transition-all duration-300 border-primary/10 shadow-royal">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center">

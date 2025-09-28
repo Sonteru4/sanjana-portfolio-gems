@@ -81,9 +81,9 @@ export default function Education() {
               {education.map((edu, index) => (
                 <div key={edu.id} className="relative">
                   {/* Timeline dot */}
-                  <div className="absolute left-6 top-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-emerald hidden md:block"></div>
+                  <div className="absolute left-6 top-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-royal hidden md:block"></div>
                   
-                  <Card className="md:ml-16 card-hover transition-all duration-300 border-primary/10 shadow-emerald">
+                  <Card className="md:ml-16 card-hover transition-all duration-300 border-primary/10 shadow-royal">
                     <CardContent className="p-6">
                       <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                         <div className="flex-1">

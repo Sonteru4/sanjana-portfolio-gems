@@ -118,7 +118,7 @@ export default function Projects() {
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 gap-8">
             {filteredProjects.map((project) => (
-              <Card key={project.id} className="card-hover transition-all duration-300 border-primary/10 shadow-emerald">
+              <Card key={project.id} className="card-hover transition-all duration-300 border-primary/10 shadow-royal">
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
                     <Badge variant="outline" className="border-primary text-primary">

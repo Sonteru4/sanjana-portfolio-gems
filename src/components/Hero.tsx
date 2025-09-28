@@ -12,7 +12,7 @@ export default function Hero() {
             <img
               src={heroAvatar}
               alt="Sanjana Onteru"
-              className="w-40 h-40 rounded-full mx-auto shadow-emerald glow-emerald object-cover border-4 border-primary/20"
+              className="w-40 h-40 rounded-full mx-auto shadow-royal glow-royal object-cover border-4 border-primary/20"
             />
           </div>
 
@@ -35,7 +35,7 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap justify-center gap-4 mb-16">
-            <Button size="lg" className="hero-gradient shadow-emerald hover:shadow-lg transition-all duration-300">
+            <Button size="lg" className="hero-gradient shadow-royal hover:shadow-lg transition-all duration-300">
               <Github className="mr-2 h-5 w-5" />
               GitHub
             </Button>

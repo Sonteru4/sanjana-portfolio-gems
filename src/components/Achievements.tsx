@@ -82,7 +82,7 @@ export default function Achievements() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {achievements.map((achievement) => (
-              <Card key={achievement.id} className="card-hover transition-all duration-300 border-primary/10 shadow-emerald group hover:shadow-lg">
+              <Card key={achievement.id} className="card-hover transition-all duration-300 border-primary/10 shadow-royal group hover:shadow-lg">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center">

@@ -96,7 +96,7 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <Card className="shadow-emerald border-primary/10">
+            <Card className="shadow-royal border-primary/10">
               <CardHeader>
                 <CardTitle className="text-xl text-primary">Send a Message</CardTitle>
               </CardHeader>
@@ -137,7 +137,7 @@ export default function Contact() {
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full hero-gradient shadow-emerald hover:shadow-lg transition-all duration-300">
+                  <Button type="submit" className="w-full hero-gradient shadow-royal hover:shadow-lg transition-all duration-300">
                     <Send className="mr-2 h-4 w-4" />
                     Send Message
                   </Button>

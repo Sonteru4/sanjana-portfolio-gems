@@ -90,7 +90,7 @@ export default function Gallery() {
             {galleryItems.map((item) => (
               <Card 
                 key={item.id} 
-                className="card-hover transition-all duration-300 border-primary/10 shadow-emerald group cursor-pointer overflow-hidden"
+                className="card-hover transition-all duration-300 border-primary/10 shadow-royal group cursor-pointer overflow-hidden"
                 onClick={() => openLightbox(item.id)}
               >
                 <div className="relative">

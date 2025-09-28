@@ -15,10 +15,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Emerald Green Primary */
-    --primary: 160 84% 39%;
+    /* Dark Royal Blue Primary */
+    --primary: 240 73% 25%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 160 100% 50%;
+    --primary-glow: 240 100% 60%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -26,7 +26,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 160 84% 39%;
+    --accent: 240 73% 25%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -34,15 +34,15 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 160 84% 39%;
+    --ring: 240 73% 25%;
 
     /* Portfolio-specific tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(160, 84%, 39%), hsl(160, 100%, 50%));
+    --hero-gradient: linear-gradient(135deg, hsl(240, 73%, 25%), hsl(240, 100%, 60%));
     --card-hover: 0 0% 98%;
     --section-bg: 210 40% 98%;
     --text-subtle: 215.4 16.3% 46.9%;
-    --shadow-emerald: 0 10px 30px -10px hsl(160 84% 39% / 0.3);
-    --glow-emerald: 0 0 40px hsl(160 100% 50% / 0.4);
+    --shadow-royal: 0 10px 30px -10px hsl(240 73% 25% / 0.3);
+    --glow-royal: 0 0 40px hsl(240 100% 60% / 0.4);
 
     --radius: 0.5rem;
 
@@ -73,10 +73,10 @@
     --popover: 217.2 32.6% 17.5%;
     --popover-foreground: 210 40% 98%;
 
-    /* Emerald stays vibrant in dark mode */
-    --primary: 160 84% 39%;
+    /* Royal blue stays vibrant in dark mode */
+    --primary: 240 73% 35%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 160 100% 50%;
+    --primary-glow: 240 100% 70%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -84,7 +84,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 160 84% 39%;
+    --accent: 240 73% 35%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
@@ -92,15 +92,15 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 160 84% 39%;
+    --ring: 240 73% 35%;
 
     /* Dark mode portfolio tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(160, 84%, 39%), hsl(160, 100%, 50%));
+    --hero-gradient: linear-gradient(135deg, hsl(240, 73%, 35%), hsl(240, 100%, 70%));
     --card-hover: 217.2 32.6% 20%;
     --section-bg: 217.2 32.6% 15%;
     --text-subtle: 215 20.2% 65.1%;
-    --shadow-emerald: 0 10px 30px -10px hsl(160 84% 39% / 0.4);
-    --glow-emerald: 0 0 40px hsl(160 100% 50% / 0.5);
+    --shadow-royal: 0 10px 30px -10px hsl(240 73% 35% / 0.4);
+    --glow-royal: 0 0 40px hsl(240 100% 70% / 0.5);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -139,12 +139,12 @@
     background-color: hsl(var(--section-bg));
   }
   
-  .shadow-emerald {
-    box-shadow: var(--shadow-emerald);
+  .shadow-royal {
+    box-shadow: var(--shadow-royal);
   }
   
-  .glow-emerald {
-    box-shadow: var(--glow-emerald);
+  .glow-royal {
+    box-shadow: var(--glow-royal);
   }
   
   .card-hover:hover {
