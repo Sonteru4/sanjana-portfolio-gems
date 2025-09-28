@@ -1,51 +1,9 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-
-interface GalleryItem {
-  id: number;
-  src: string;
-  title: string;
-  description: string;
-  category: string;
-}
-
-const galleryItems: GalleryItem[] = [
-  {
-    id: 1,
-    src: gallery1,
-    title: "Data Science Workspace",
-    description: "My daily workspace where I develop and deploy machine learning models, featuring multiple monitors for data visualization and code development.",
-    category: "Workspace"
-  },
-  {
-    id: 2,
-    src: gallery2,
-    title: "Conference Presentation",
-    description: "Presenting AI/ML insights at a tech conference, sharing innovative approaches to predictive analytics with industry professionals.",
-    category: "Speaking"
-  },
-  {
-    id: 3,
-    src: gallery3,
-    title: "Team Collaboration",
-    description: "Leading a cross-functional team in designing machine learning solutions, combining domain expertise with technical innovation.",
-    category: "Leadership"
-  },
-  {
-    id: 4,
-    src: gallery4,
-    title: "Innovation Award",
-    description: "Receiving recognition for developing breakthrough AI solutions that delivered significant business impact and cost savings.",
-    category: "Achievement"
-  }
-];
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { X, ChevronLeft, ChevronRight, ChevronRight as ArrowRight } from "lucide-react";
+import { GALLERY } from "@/data/content";
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -61,19 +19,19 @@ export default function Gallery() {
   const navigateImage = (direction: 'prev' | 'next') => {
     if (selectedImage === null) return;
     
-    const currentIndex = galleryItems.findIndex(item => item.id === selectedImage);
+    const currentIndex = GALLERY.findIndex((_, idx) => idx === selectedImage);
     let newIndex;
     
     if (direction === 'prev') {
-      newIndex = currentIndex > 0 ? currentIndex - 1 : galleryItems.length - 1;
+      newIndex = currentIndex > 0 ? currentIndex - 1 : GALLERY.length - 1;
     } else {
-      newIndex = currentIndex < galleryItems.length - 1 ? currentIndex + 1 : 0;
+      newIndex = currentIndex < GALLERY.length - 1 ? currentIndex + 1 : 0;
     }
     
-    setSelectedImage(galleryItems[newIndex].id);
+    setSelectedImage(newIndex);
   };
 
-  const selectedItem = galleryItems.find(item => item.id === selectedImage);
+  const selectedItem = selectedImage !== null ? GALLERY[selectedImage] : undefined;
 
   return (
     <section id="gallery" className="py-20 bg-section">
@@ -87,38 +45,30 @@ export default function Gallery() {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {galleryItems.map((item) => (
+            {GALLERY.map((item, idx) => (
               <Card 
-                key={item.id} 
+                key={idx} 
                 className="card-hover transition-all duration-300 border-primary/10 shadow-royal group cursor-pointer overflow-hidden"
-                onClick={() => openLightbox(item.id)}
+                onClick={() => openLightbox(idx)}
               >
                 <div className="relative">
                   <img
                     src={item.src}
-                    alt={item.title}
+                    alt={item.alt}
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                        <ChevronRight className="h-6 w-6 text-white" />
+                        <ArrowRight className="h-6 w-6 text-white" />
                       </div>
                     </div>
                   </div>
                 </div>
                 <CardContent className="p-4">
-                  <div className="mb-2">
-                    <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">
-                      {item.category}
-                    </span>
-                  </div>
                   <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
-                    {item.title}
+                    {item.alt}
                   </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
-                    {item.description}
-                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -158,13 +108,12 @@ export default function Gallery() {
 
                   <img
                     src={selectedItem.src}
-                    alt={selectedItem.title}
+                    alt={selectedItem.alt}
                     className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
                   />
                   
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white rounded-b-lg">
-                    <h3 className="text-xl font-semibold mb-2">{selectedItem.title}</h3>
-                    <p className="text-sm opacity-90">{selectedItem.description}</p>
+                    <h3 className="text-xl font-semibold mb-2">{selectedItem.alt}</h3>
                   </div>
                 </div>
               )}

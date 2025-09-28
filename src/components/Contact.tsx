@@ -3,40 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Linkedin, Github, Send } from "lucide-react";
-
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "sanjana.onteru@email.com",
-    href: "mailto:sanjana.onteru@email.com"
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567"
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "San Francisco, CA",
-    href: null
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: "linkedin.com/in/sanjanaonteru",
-    href: "https://linkedin.com/in/sanjanaonteru"
-  },
-  {
-    icon: Github,
-    label: "GitHub",
-    value: "github.com/sanjanaonteru",
-    href: "https://github.com/sanjanaonteru"
-  }
-];
+import { Mail, Linkedin, Github, Send } from "lucide-react";
+import { PROFILE } from "@/data/content";
 
 export default function Contact() {
   return (
@@ -62,28 +30,45 @@ export default function Contact() {
               </p>
 
               <div className="space-y-4">
-                {contactInfo.map((item) => (
-                  <div key={item.label} className="flex items-center space-x-4">
+                {PROFILE.email && (
+                  <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <item.icon className="h-5 w-5 text-primary" />
+                      <Mail className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">{item.label}</p>
-                      {item.href ? (
-                        <a 
-                          href={item.href}
-                          className="text-foreground hover:text-primary transition-colors duration-200"
-                          target={item.href.startsWith('http') ? '_blank' : undefined}
-                          rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <p className="text-foreground">{item.value}</p>
-                      )}
+                      <p className="text-sm font-medium text-muted-foreground">Email</p>
+                      <a href={`mailto:${PROFILE.email}`} className="text-foreground hover:text-primary transition-colors duration-200">
+                        {PROFILE.email}
+                      </a>
                     </div>
                   </div>
-                ))}
+                )}
+                {PROFILE.socials?.linkedin && (
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Linkedin className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-muted-foreground">LinkedIn</p>
+                      <a href={PROFILE.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors duration-200">
+                        {PROFILE.socials.linkedin}
+                      </a>
+                    </div>
+                  </div>
+                )}
+                {PROFILE.socials?.github && (
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Github className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-muted-foreground">GitHub</p>
+                      <a href={PROFILE.socials.github} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors duration-200">
+                        {PROFILE.socials.github}
+                      </a>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="mt-8 p-6 bg-primary/5 rounded-lg border-l-4 border-primary">

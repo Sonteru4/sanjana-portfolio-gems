@@ -4,76 +4,30 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Github, ExternalLink, Search, Filter } from "lucide-react";
+import { PROJECTS } from "@/data/content";
 
-interface Project {
-  id: number;
-  title: string;
-  subtitle: string;
-  description: string;
-  techStack: string[];
-  category: "Data/ML" | "Other";
-  repoUrl?: string;
-  demoUrl?: string;
-  impact: string;
-}
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "Customer Churn Prediction",
-    subtitle: "ML-Powered Business Intelligence",
-    description: "Developed an end-to-end machine learning pipeline to predict customer churn with 94% accuracy, helping reduce customer loss by 23%.",
-    techStack: ["Python", "Scikit-learn", "XGBoost", "Pandas", "Matplotlib", "Docker"],
-    category: "Data/ML",
-    repoUrl: "https://github.com/sanjana/churn-prediction",
-    demoUrl: "https://churn-demo.example.com",
-    impact: "Reduced customer churn by 23% saving $2.3M annually"
-  },
-  {
-    id: 2,
-    title: "Supply Chain Optimization",
-    subtitle: "Deep Learning for Logistics",
-    description: "Built a neural network model to optimize supply chain routes and inventory management, reducing operational costs by 18%.",
-    techStack: ["TensorFlow", "Python", "SQL", "AWS", "Apache Airflow", "Tableau"],
-    category: "Data/ML",
-    repoUrl: "https://github.com/sanjana/supply-chain-ai",
-    impact: "18% reduction in operational costs across 50+ distribution centers"
-  },
-  {
-    id: 3,
-    title: "Real-time Fraud Detection",
-    subtitle: "Streaming ML with Apache Kafka",
-    description: "Implemented a real-time fraud detection system processing 100K+ transactions per minute with sub-second response times.",
-    techStack: ["Apache Kafka", "Apache Spark", "Redis", "Python", "PostgreSQL", "Kubernetes"],
-    category: "Data/ML",
-    repoUrl: "https://github.com/sanjana/fraud-detection",
-    demoUrl: "https://fraud-demo.example.com",
-    impact: "Prevented $5.2M in fraudulent transactions in first 6 months"
-  },
-  {
-    id: 4,
-    title: "Portfolio Website",
-    subtitle: "Personal Brand Platform",
-    description: "Designed and developed a responsive portfolio website showcasing projects and professional journey with modern UI/UX.",
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
-    category: "Other",
-    repoUrl: "https://github.com/sanjana/portfolio",
-    demoUrl: "https://sanjanaonteru.dev",
-    impact: "Increased profile visibility and professional networking opportunities"
-  }
-];
+type FilterType = "All" | "Data/ML" | "Other";
 
 export default function Projects() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeFilter, setActiveFilter] = useState<"All" | "Data/ML" | "Other">("All");
+  const [activeFilter, setActiveFilter] = useState<FilterType>("All");
 
-  const filteredProjects = projects.filter(project => {
+  const normalized = PROJECTS.map(p => ({
+    title: p.title,
+    subtitle: p.subtitle ?? "",
+    description: p.description,
+    techStack: p.tags,
+    category: p.type === "data" ? "Data/ML" : "Other",
+    repoUrl: p.links?.repo ?? p.links?.url,
+    demoUrl: p.links?.demo,
+    impact: p.impact ?? "",
+  }));
+
+  const filteredProjects = normalized.filter(project => {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          project.techStack.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
-    
     const matchesFilter = activeFilter === "All" || project.category === activeFilter;
-    
     return matchesSearch && matchesFilter;
   });
 
@@ -117,8 +71,8 @@ export default function Projects() {
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 gap-8">
-            {filteredProjects.map((project) => (
-              <Card key={project.id} className="card-hover transition-all duration-300 border-primary/10 shadow-royal">
+              {filteredProjects.map((project, idx) => (
+              <Card key={idx} className="card-hover transition-all duration-300 border-primary/10 shadow-royal">
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
                     <Badge variant="outline" className="border-primary text-primary">
@@ -126,7 +80,7 @@ export default function Projects() {
                     </Badge>
                   </div>
                   <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
-                  <p className="text-primary font-medium">{project.subtitle}</p>
+                  {project.subtitle && <p className="text-primary font-medium">{project.subtitle}</p>}
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-4 leading-relaxed">
@@ -143,22 +97,28 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  <div className="mb-4 p-3 bg-primary/5 rounded-lg border-l-4 border-primary">
-                    <p className="text-sm font-medium text-primary mb-1">Impact</p>
-                    <p className="text-sm text-muted-foreground">{project.impact}</p>
-                  </div>
+                  {project.impact && (
+                    <div className="mb-4 p-3 bg-primary/5 rounded-lg border-l-4 border-primary">
+                      <p className="text-sm font-medium text-primary mb-1">Impact</p>
+                      <p className="text-sm text-muted-foreground">{project.impact}</p>
+                    </div>
+                  )}
 
                   <div className="flex gap-2">
                     {project.repoUrl && (
-                      <Button size="sm" variant="outline" className="flex-1 border-primary text-primary hover:bg-primary/10">
-                        <Github className="mr-2 h-4 w-4" />
-                        Repository
+                      <Button asChild size="sm" variant="outline" className="flex-1 border-primary text-primary hover:bg-primary/10">
+                        <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                          <Github className="mr-2 h-4 w-4" />
+                          Repository
+                        </a>
                       </Button>
                     )}
                     {project.demoUrl && (
-                      <Button size="sm" className="flex-1 hero-gradient">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Live Demo
+                      <Button asChild size="sm" className="flex-1 hero-gradient">
+                        <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Live Demo
+                        </a>
                       </Button>
                     )}
                   </div>
