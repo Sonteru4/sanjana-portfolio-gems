@@ -36,7 +36,9 @@ export const PROJECTS: Project[] = [
     links: { demo: "#" } // internal — keep placeholder
   },
   {
-   
+    title: "Space Industry NLP Analysis",
+    subtitle: "Historical corpus analysis with LDA topic modeling",
+    type: "data",
     description: "NLP topic modeling (LDA) across Cold War vs. modern space-industry corpora with interactive timelines and narrative.",
     tags: ["NLP", "LDA", "Visualization"],
     links: { repo: "https://github.com/Sonteru4" } // TODO: point to project repo
