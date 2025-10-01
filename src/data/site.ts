@@ -33,7 +33,10 @@ export interface SiteConfig {
   skills: {
     technical: string[];
     tools: string[];
-    certifications: string[];
+    certifications: Array<{
+      name: string;
+      logo: string;
+    }>;
   };
   
   // Projects
@@ -56,6 +59,7 @@ export interface SiteConfig {
     role: string;
     period: string;
     bullets: string[];
+    logo: string;
   }>;
   
   // Education
@@ -142,9 +146,18 @@ export const siteConfig: SiteConfig = {
       "Apache Airflow"
     ],
     certifications: [
-      "AWS Certified AI Practitioner",
-      "AWS Machine Learning – Associate",
-      "Tableau Data Analyst"
+      {
+        name: "AWS Certified AI Practitioner",
+        logo: "/src/assets/logos/aws.png"
+      },
+      {
+        name: "AWS Machine Learning – Associate",
+        logo: "/src/assets/logos/aws.png"
+      },
+      {
+        name: "Tableau Data Analyst",
+        logo: "/src/assets/logos/tableau.png"
+      }
     ]
   },
   
@@ -189,6 +202,7 @@ export const siteConfig: SiteConfig = {
       company: "Lore Health",
       role: "Machine Learning Engineer | Engine Lab Squad",
       period: "July 2025 — Present",
+      logo: "/src/assets/logos/lore-health.png",
       bullets: [
         "Designed and productionized real-time ML pipelines in Python for conversational anomaly detection, streaming 50K+ messages daily with <200ms latency to monitor sentiment shifts, topic spikes, and atypical behaviors",
         "Built MLOps foundations with CI/CD for models and services, feature store patterns, observability, and runbooks, enabling reliable research-to-production deployments",
@@ -201,6 +215,7 @@ export const siteConfig: SiteConfig = {
       company: "Barclays Bank",
       role: "Data Insights Analyst, Project Lead | US Consumer Bank",
       period: "Dec 2021 — Jun 2025",
+      logo: "/src/assets/logos/barclays.png",
       bullets: [
         "Built and deployed forecasting models (Python, PySpark, AWS) that informed business strategy, delivering measurable revenue gains and cost reductions for operations",
         "Engineered automated QA pipelines in Python/NLP to analyze 1.5M+ customer calls monthly, reducing false positives in profanity detection by 20%+ and improving compliance accuracy",
@@ -217,6 +232,7 @@ export const siteConfig: SiteConfig = {
       company: "Caterpillar",
       role: "Business Analytics Intern",
       period: "Jun 2020 — Sep 2020",
+      logo: "/src/assets/logos/caterpillar.png",
       bullets: [
         "Delivered B2B and B2C migration strategy by analyzing consumer behavior and designing an adoption roadmap, leveraging Power BI to deliver actionable insights"
       ]

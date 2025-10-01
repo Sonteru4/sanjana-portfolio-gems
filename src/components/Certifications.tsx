@@ -18,23 +18,23 @@ export default function Certifications() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {siteConfig.skills.certifications.map((cert, idx) => (
-              <Card key={idx} className="card-hover transition-all duration-300 border-primary/10 shadow-royal">
+              <Card key={idx} className="group rounded-2xl border shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 dark:bg-neutral-900 dark:border-neutral-800">
                 <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
-                        <Award className="h-6 w-6 text-primary" />
+                  <div className="flex items-start gap-4 mb-4">
+                    <img 
+                      src={cert.logo} 
+                      alt={`${cert.name} certification logo`}
+                      className="h-10 w-10 object-contain rounded-lg grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-foreground leading-tight">
+                        {cert.name}
+                      </h3>
+                      <div className="flex items-center text-sm text-muted-foreground mt-2">
+                        <Award className="mr-2 h-4 w-4" />
+                        Professional Certification
                       </div>
                     </div>
-                  </div>
-
-                  <h3 className="text-lg font-semibold mb-2 text-foreground leading-tight">
-                    {cert}
-                  </h3>
-                  
-                  <div className="flex items-center text-sm text-muted-foreground mb-3">
-                    <Calendar className="mr-2 h-4 w-4" />
-                    Professional Certification
                   </div>
                 </CardContent>
               </Card>

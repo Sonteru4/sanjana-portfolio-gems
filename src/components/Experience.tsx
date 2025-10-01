@@ -25,32 +25,39 @@ export default function Experience() {
                   {/* Timeline dot */}
                   <div className="absolute left-6 top-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-royal hidden md:block"></div>
                   
-                  <Card className="md:ml-16 card-hover transition-all duration-300 border-primary/10 shadow-royal">
+                  <Card className="group md:ml-16 rounded-2xl border shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 dark:bg-neutral-900 dark:border-neutral-800">
                     <CardContent className="p-6">
-                      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <div>
-                          <h3 className="text-xl font-semibold text-primary mb-1">{exp.role}</h3>
-                          <p className="text-lg font-medium text-foreground mb-2">{exp.company}</p>
-                        </div>
-                        <div className="flex flex-col md:items-end space-y-1">
-                          <div className="flex items-center text-sm text-muted-foreground">
-                            <Calendar className="mr-2 h-4 w-4" />
-                            {exp.period}
+                      <div className="flex items-start gap-4 mb-4">
+                        {/* Company Logo */}
+                        <img 
+                          src={exp.logo} 
+                          alt={`${exp.company} logo`}
+                          className="h-10 w-10 object-contain rounded-lg grayscale group-hover:grayscale-0 transition-all duration-300"
+                        />
+                        
+                        <div className="flex-1">
+                          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                            <div>
+                              <h3 className="text-xl font-semibold text-primary mb-1">{exp.role}</h3>
+                              <p className="text-lg font-medium text-foreground">{exp.company}</p>
+                            </div>
+                            <div className="flex items-center text-sm text-muted-foreground mt-2 md:mt-0">
+                              <Calendar className="mr-2 h-4 w-4" />
+                              {exp.period}
+                            </div>
                           </div>
-                        </div>
-                      </div>
 
-                      <div className="space-y-4">
-                        <div>
-                          <h4 className="font-medium mb-2">Key Responsibilities</h4>
-                          <ul className="space-y-1">
-                            {exp.bullets.map((item, i) => (
-                              <li key={i} className="text-muted-foreground text-sm flex items-start">
-                                <span className="text-primary mr-2">•</span>
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
+                          <div className="mt-4">
+                            <h4 className="font-medium mb-2">Key Responsibilities</h4>
+                            <ul className="space-y-1">
+                              {exp.bullets.map((item, i) => (
+                                <li key={i} className="text-muted-foreground text-sm flex items-start">
+                                  <span className="text-primary mr-2">•</span>
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </CardContent>
