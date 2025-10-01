@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin } from "lucide-react";
-import { EXPERIENCE } from "@/data/content";
+import { siteConfig } from "@/data/site";
 
 export default function Experience() {
   return (
@@ -20,7 +20,7 @@ export default function Experience() {
             <div className="absolute left-8 top-0 bottom-0 w-px bg-primary/30 hidden md:block"></div>
             
             <div className="space-y-12">
-              {EXPERIENCE.map((exp, index) => (
+              {siteConfig.experience.map((exp, index) => (
                 <div key={`${exp.company}-${index}`} className="relative">
                   {/* Timeline dot */}
                   <div className="absolute left-6 top-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-royal hidden md:block"></div>

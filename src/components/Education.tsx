@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap, Calendar } from "lucide-react";
-import { EDUCATION } from "@/data/content";
+import { siteConfig } from "@/data/site";
 
 export default function Education() {
   return (
@@ -20,8 +20,8 @@ export default function Education() {
             <div className="absolute left-8 top-0 bottom-0 w-px bg-primary/30 hidden md:block"></div>
             
             <div className="space-y-12">
-              {EDUCATION.map((edu, index) => (
-                <div key={`${edu.program}-${index}`} className="relative">
+              {siteConfig.education.map((edu, index) => (
+                <div key={`${edu.degree}-${index}`} className="relative">
                   {/* Timeline dot */}
                   <div className="absolute left-6 top-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-royal hidden md:block"></div>
                   
@@ -29,8 +29,8 @@ export default function Education() {
                     <CardContent className="p-6">
                       <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                         <div className="flex-1">
-                          <h3 className="text-xl font-semibold text-primary mb-1">{edu.program}</h3>
-                          <p className="text-lg font-medium text-foreground mb-2">{edu.org}</p>
+                          <h3 className="text-xl font-semibold text-primary mb-1">{edu.degree}</h3>
+                          <p className="text-lg font-medium text-foreground mb-2">{edu.school}</p>
                         </div>
                         <div className="flex flex-col md:items-end space-y-1">
                           <div className="flex items-center text-sm text-muted-foreground">

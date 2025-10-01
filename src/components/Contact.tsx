@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, Linkedin, Github, Send } from "lucide-react";
-import { PROFILE } from "@/data/content";
+import { siteConfig } from "@/data/site";
 
 export default function Contact() {
   return (
@@ -30,41 +30,41 @@ export default function Contact() {
               </p>
 
               <div className="space-y-4">
-                {PROFILE.email && (
+                {siteConfig.email && (
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Mail className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">Email</p>
-                      <a href={`mailto:${PROFILE.email}`} className="text-foreground hover:text-primary transition-colors duration-200">
-                        {PROFILE.email}
+                      <a href={`mailto:${siteConfig.email}`} className="text-foreground hover:text-primary transition-colors duration-200">
+                        {siteConfig.email}
                       </a>
                     </div>
                   </div>
                 )}
-                {PROFILE.socials?.linkedin && (
+                {siteConfig.social.linkedin && (
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Linkedin className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">LinkedIn</p>
-                      <a href={PROFILE.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors duration-200">
-                        {PROFILE.socials.linkedin}
+                      <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors duration-200">
+                        {siteConfig.social.linkedin}
                       </a>
                     </div>
                   </div>
                 )}
-                {PROFILE.socials?.github && (
+                {siteConfig.social.github && (
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Github className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">GitHub</p>
-                      <a href={PROFILE.socials.github} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors duration-200">
-                        {PROFILE.socials.github}
+                      <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors duration-200">
+                        {siteConfig.social.github}
                       </a>
                     </div>
                   </div>

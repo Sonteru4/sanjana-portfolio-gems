@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Brain, BarChart3, Users, Lightbulb } from "lucide-react";
+import { siteConfig } from "@/data/site";
 
 const skills = [
   {
@@ -39,20 +40,8 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-primary">My Journey</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                As an AI/ML Engineer and Data Storyteller, I bridge the gap between complex 
-                technical implementations and business value. My ENTJ-A personality drives me 
-                to lead projects that transform raw data into strategic advantages.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                I specialize in developing end-to-end machine learning pipelines, creating 
-                compelling data visualizations, and translating technical insights into 
-                actionable business strategies.
-              </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                When I'm not coding or analyzing data, you'll find me exploring the latest 
-                AI research, mentoring aspiring data scientists, or hiking in nature to 
-                recharge my creative energy.
+                {siteConfig.bio.long}
               </p>
             </div>
             

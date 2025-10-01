@@ -1,19 +1,20 @@
 import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { siteConfig } from "@/data/site";
 
 const socialLinks = [
   {
     name: "GitHub",
-    href: "https://github.com/sanjanaonteru",
+    href: siteConfig.social.github,
     icon: Github
   },
   {
     name: "LinkedIn", 
-    href: "https://linkedin.com/in/sanjanaonteru",
+    href: siteConfig.social.linkedin,
     icon: Linkedin
   },
   {
     name: "Email",
-    href: "mailto:sanjana.onteru@email.com",
+    href: `mailto:${siteConfig.email}`,
     icon: Mail
   }
 ];
@@ -27,10 +28,10 @@ export default function Footer() {
             {/* Brand */}
             <div className="mb-6 md:mb-0">
               <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-                Sanjana Onteru
+                {siteConfig.name}
               </h3>
               <p className="text-sm text-muted-foreground mt-1">
-                AI/ML Engineer • Data Storyteller • ENTJ-A
+                {siteConfig.title}
               </p>
             </div>
 
@@ -57,7 +58,7 @@ export default function Footer() {
           {/* Copyright */}
           <div className="text-center">
             <p className="text-sm text-muted-foreground flex items-center justify-center">
-              © 2025 Sanjana Onteru. Built with 
+              © 2025 {siteConfig.name}. Built with 
               <Heart className="h-4 w-4 text-red-500 mx-1" />
               using React, TypeScript & Tailwind CSS
             </p>

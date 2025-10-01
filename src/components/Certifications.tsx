@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, ExternalLink, Award } from "lucide-react";
-import { CERTS } from "@/data/content";
+import { siteConfig } from "@/data/site";
 
 export default function Certifications() {
   return (
@@ -17,7 +17,7 @@ export default function Certifications() {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CERTS.map((cert, idx) => (
+            {siteConfig.skills.certifications.map((cert, idx) => (
               <Card key={idx} className="card-hover transition-all duration-300 border-primary/10 shadow-royal">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-4">
@@ -29,26 +29,13 @@ export default function Certifications() {
                   </div>
 
                   <h3 className="text-lg font-semibold mb-2 text-foreground leading-tight">
-                    {cert.name}
+                    {cert}
                   </h3>
-                  
-                  <p className="text-primary font-medium mb-2">{cert.org}</p>
                   
                   <div className="flex items-center text-sm text-muted-foreground mb-3">
                     <Calendar className="mr-2 h-4 w-4" />
-                    Year: {cert.year}
+                    Professional Certification
                   </div>
-
-                  {cert.url && (
-                    <Button 
-                      size="sm" 
-                      variant="outline" 
-                      className="w-full border-primary text-primary hover:bg-primary/10"
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      View Certificate
-                    </Button>
-                  )}
                 </CardContent>
               </Card>
             ))}

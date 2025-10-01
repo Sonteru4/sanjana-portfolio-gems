@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
+import { siteConfig } from "@/data/site";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -39,7 +40,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-              Sanjana Onteru
+              {siteConfig.name}
             </h1>
           </div>
 

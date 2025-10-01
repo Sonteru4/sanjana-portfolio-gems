@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Github, ExternalLink, Search, Filter } from "lucide-react";
-import { PROJECTS } from "@/data/content";
+import { siteConfig } from "@/data/site";
 
 type FilterType = "All" | "Data/ML" | "Other";
 
@@ -12,13 +12,13 @@ export default function Projects() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeFilter, setActiveFilter] = useState<FilterType>("All");
 
-  const normalized = PROJECTS.map(p => ({
+  const normalized = siteConfig.projects.map(p => ({
     title: p.title,
-    subtitle: p.subtitle ?? "",
+    subtitle: p.oneLiner,
     description: p.description,
     techStack: p.tags,
-    category: p.type === "data" ? "Data/ML" : "Other",
-    repoUrl: p.links?.repo ?? p.links?.url,
+    category: p.tags.some(tag => ["ML", "AI", "Data", "NLP", "AWS", "SageMaker"].includes(tag)) ? "Data/ML" : "Other",
+    repoUrl: p.links?.repo,
     demoUrl: p.links?.demo,
     impact: p.impact ?? "",
   }));

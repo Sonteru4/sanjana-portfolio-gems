@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, FileDown } from "lucide-react";
-import { PROFILE } from "@/data/content";
+import { siteConfig } from "@/data/site";
 
 export default function Hero() {
   return (
@@ -10,58 +10,56 @@ export default function Hero() {
           {/* Avatar */}
           <div className="mb-8">
             <img
-              src={PROFILE.avatar || "/avatar.jpg"}
-              alt={PROFILE.name || "Profile avatar"}
+              src={siteConfig.headshot}
+              alt={`${siteConfig.name} - ${siteConfig.role}`}
               className="w-40 h-40 rounded-full mx-auto shadow-royal glow-royal object-cover border-4 border-primary/20"
             />
           </div>
 
           {/* Name & Tagline */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
-            {PROFILE.name}
+            {siteConfig.name}
           </h1>
           
           <p className="text-xl md:text-2xl text-subtle mb-8 max-w-2xl mx-auto">
-            {PROFILE.tagline}
+            {siteConfig.title}
           </p>
 
           <p className="text-lg text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            Passionate about transforming complex data into actionable insights and building 
-            intelligent systems that solve real-world problems. I combine technical expertise 
-            with strategic thinking to deliver impactful AI/ML solutions.
+            {siteConfig.bio.long}
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap justify-center gap-4 mb-16">
-            {PROFILE.socials?.github && (
+            {siteConfig.resumeUrl && (
               <Button asChild size="lg" className="hero-gradient shadow-royal hover:shadow-lg transition-all duration-300">
-                <a href={PROFILE.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <a href={siteConfig.resumeUrl} download aria-label={siteConfig.cta.primary}>
+                  <FileDown className="mr-2 h-5 w-5" />
+                  {siteConfig.cta.primary}
+                </a>
+              </Button>
+            )}
+            {siteConfig.social.github && (
+              <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                   <Github className="mr-2 h-5 w-5" />
                   GitHub
                 </a>
               </Button>
             )}
-            {PROFILE.socials?.linkedin && (
+            {siteConfig.social.linkedin && (
               <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                <a href={PROFILE.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <Linkedin className="mr-2 h-5 w-5" />
                   LinkedIn
                 </a>
               </Button>
             )}
-            {PROFILE.email && (
+            {siteConfig.email && (
               <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                <a href={`mailto:${PROFILE.email}`} aria-label="Email">
+                <a href={`mailto:${siteConfig.email}`} aria-label="Email">
                   <Mail className="mr-2 h-5 w-5" />
-                  Email
-                </a>
-              </Button>
-            )}
-            {PROFILE.resumeUrl && (
-              <Button asChild size="lg" variant="secondary" className="hover:shadow-md transition-all duration-300">
-                <a href={PROFILE.resumeUrl} download>
-                  <FileDown className="mr-2 h-5 w-5" />
-                  Resume
+                  {siteConfig.cta.secondary}
                 </a>
               </Button>
             )}
