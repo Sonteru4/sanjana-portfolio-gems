@@ -2,11 +2,12 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X, ChevronLeft, ChevronRight, ChevronRight as ArrowRight } from "lucide-react";
-import { GALLERY } from "@/data/content";
+import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+import { siteConfig } from "@/data/site";
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const gallery = siteConfig.gallery;
 
   const openLightbox = (id: number) => {
     setSelectedImage(id);
@@ -19,25 +20,27 @@ export default function Gallery() {
   const navigateImage = (direction: 'prev' | 'next') => {
     if (selectedImage === null) return;
     
-    const currentIndex = GALLERY.findIndex((_, idx) => idx === selectedImage);
+    const currentIndex = gallery.findIndex((_, idx) => idx === selectedImage);
     let newIndex;
     
     if (direction === 'prev') {
-      newIndex = currentIndex > 0 ? currentIndex - 1 : GALLERY.length - 1;
+      newIndex = currentIndex > 0 ? currentIndex - 1 : gallery.length - 1;
     } else {
-      newIndex = currentIndex < GALLERY.length - 1 ? currentIndex + 1 : 0;
+      newIndex = currentIndex < gallery.length - 1 ? currentIndex + 1 : 0;
     }
     
     setSelectedImage(newIndex);
   };
 
-  const selectedItem = selectedImage !== null ? GALLERY[selectedImage] : undefined;
+  const selectedItem = selectedImage !== null ? gallery[selectedImage] : undefined;
+  
+  if (gallery.length === 0) return null;
 
   return (
-    <section id="gallery" className="py-20 bg-section">
+    <section id="gallery" className="py-20 bg-section" aria-labelledby="gallery-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+          <h2 id="gallery-heading" className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
             Gallery
           </h2>
           <p className="text-xl text-center text-subtle mb-16">
@@ -45,7 +48,7 @@ export default function Gallery() {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {GALLERY.map((item, idx) => (
+            {gallery.map((item, idx) => (
               <Card 
                 key={idx} 
                 className="card-hover transition-all duration-300 border-primary/10 shadow-royal group cursor-pointer overflow-hidden"
@@ -56,11 +59,12 @@ export default function Gallery() {
                     src={item.src}
                     alt={item.alt}
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                        <ArrowRight className="h-6 w-6 text-white" />
+                        <ZoomIn className="h-6 w-6 text-white" aria-hidden="true" />
                       </div>
                     </div>
                   </div>
@@ -84,6 +88,7 @@ export default function Gallery() {
                     size="icon"
                     className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white"
                     onClick={closeLightbox}
+                    aria-label="Close lightbox"
                   >
                     <X className="h-4 w-4" />
                   </Button>
@@ -93,6 +98,7 @@ export default function Gallery() {
                     size="icon"
                     className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white"
                     onClick={() => navigateImage('prev')}
+                    aria-label="Previous image"
                   >
                     <ChevronLeft className="h-4 w-4" />
                   </Button>
@@ -102,6 +108,7 @@ export default function Gallery() {
                     size="icon"
                     className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white"
                     onClick={() => navigateImage('next')}
+                    aria-label="Next image"
                   >
                     <ChevronRight className="h-4 w-4" />
                   </Button>

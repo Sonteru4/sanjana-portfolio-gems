@@ -5,10 +5,10 @@ import { siteConfig } from "@/data/site";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 bg-section">
+    <section id="experience" className="py-20 bg-section" aria-labelledby="experience-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+          <h2 id="experience-heading" className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
             Experience
           </h2>
           <p className="text-xl text-center text-subtle mb-16">

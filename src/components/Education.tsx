@@ -5,10 +5,10 @@ import { siteConfig } from "@/data/site";
 
 export default function Education() {
   return (
-    <section id="education" className="py-20">
+    <section id="education" className="py-20" aria-labelledby="education-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+          <h2 id="education-heading" className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
             Education
           </h2>
           <p className="text-xl text-center text-subtle mb-16">

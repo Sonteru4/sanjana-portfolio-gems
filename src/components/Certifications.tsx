@@ -6,10 +6,10 @@ import { siteConfig } from "@/data/site";
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="py-20 bg-section">
+    <section id="certifications" className="py-20 bg-section" aria-labelledby="certifications-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+          <h2 id="certifications-heading" className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
             Certifications
           </h2>
           <p className="text-xl text-center text-subtle mb-16">

@@ -77,6 +77,12 @@ export interface SiteConfig {
     year?: string;
   }>;
   
+  // Gallery
+  gallery: Array<{
+    src: string;
+    alt: string;
+  }>;
+  
   // SEO
   seo: {
     title: string;
@@ -267,6 +273,13 @@ export const siteConfig: SiteConfig = {
       detail: "Advanced data visualization and dashboard creation",
       year: "2020"
     }
+  ],
+  
+  // Gallery
+  gallery: [
+    { src: "/gallery/speaking.jpg", alt: "Sanjana speaking at a tech event" },
+    { src: "/gallery/workshop.jpg", alt: "Hands-on workshop with AI/ML demos" },
+    { src: "/gallery/team.jpg", alt: "Team collaboration on ML systems" }
   ],
   
   // SEO
